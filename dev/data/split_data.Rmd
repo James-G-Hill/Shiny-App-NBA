@@ -1,0 +1,111 @@
+---
+title: "split_data"
+author: "James Hill"
+date: "13/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Splitting Data
+
+In order to reduce the amount of data the application handles we will split it.
+We will load the data in then split into 2 separate tables:
+
+- Match data
+- Play data
+
+```{r split_data}
+
+nba_data <-
+  readr::read_csv(
+    here::here("dev", "data", "source_data", "free_throws.csv")
+  ) |>
+  dplyr::distinct()
+
+```
+
+## Match Data
+
+Match data contains information about the matches but not individual shots.
+There is a large amount of this data duplicated in the original file.
+We will also split some of the text columns to allow for finer analysis.
+
+```{r create_match_data}
+
+match_data <-
+  nba_data |>
+  dplyr::select(
+    game_id,
+    game,
+    end_result,
+    season,
+    playoffs
+  ) |>
+  dplyr::distinct() |>
+  tidyr::separate(col = game, into = c("team_1", "team_2")) |>
+  tidyr::separate(col = end_result, into = c("team_1_score", "team_2_score")) |>
+  dplyr::mutate(
+    game_id = as.integer(game_id),
+    team_1_score = as.integer(team_1_score),
+    team_2_score = as.integer(team_2_score)
+  ) |>
+  dplyr::arrange(
+    season,
+    playoffs,
+    game_id
+  )
+
+```
+
+Now we save the Match data:
+
+```{r save_match_data}
+
+readr::write_csv(
+  match_data,
+  file = here::here("dev", "data", "app_data", "data_match.csv")
+)
+
+```
+
+## Play Data
+
+Play data contains information about the individual shots.
+
+```{r create_play_data}
+
+play_data <-
+  nba_data |>
+  dplyr::select(
+    game_id,
+    period,
+    player,
+    shot_made,
+    time
+  ) |>
+  dplyr::mutate(
+    game_id = as.integer(game_id),
+    period = as.integer(period),
+    shot_made = as.logical(shot_made)
+  ) |>
+  dplyr::arrange(
+    game_id,
+    period,
+    time
+  )
+
+```
+
+Now we save the Play data:
+
+```{r save_play_data}
+
+readr::write_csv(
+  play_data,
+  file = here::here("dev", "data", "app_data", "data_play.csv")
+)
+
+```

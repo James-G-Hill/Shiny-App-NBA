@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Ignore data
+*free_throws.csv
+*data_match.csv
+*data_play.csv
