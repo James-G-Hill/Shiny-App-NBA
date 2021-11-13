@@ -40,7 +40,17 @@ Here is a list of notable features of the application:
     structure
 -   Written as a golem package with appropriate structure
 -   Written to Shiny standards including shiny modules
+-   Written to standards of Tidyverse Style Guide
 -   GUI created with `bs4Dash` demonstrating BootStrap 4
 -   Source control via Git
 -   Package management with `renv`
 -   Includes Rmarkdown to split, clean, & conform original data source
+-   Favicon created with `hexSticker`
+
+## Attribution
+
+This package uses a free ‘basketball’ icon provided by Font Awesome. The
+icon .svg file has been modified so the colour is white. Please find the
+link to the license here:
+
+<https://fontawesome.com/license>

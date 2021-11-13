@@ -10,7 +10,7 @@ mod_header_ui <- function(id) {
       class = "brand-link",
       href = "#",
       shiny::tags$img(
-        src = file.path("www", "favicon.ico"),
+        src = file.path("www", "favicon.png"),
         class = "brand-image",
         style = htmltools::css(opacity = 1)
       ),
