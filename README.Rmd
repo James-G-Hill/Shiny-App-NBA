@@ -1,0 +1,32 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Shiny App with NBA Data
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+This application demonstrates various features of R & Shiny development.
+
+## Installation
+
+This package is currently private only.
+If you have been given access on GitHub please follow the instructions below:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("James-G-Hill/shiny-app-nba")
+```
