@@ -5,5 +5,5 @@
 
 # Ignore data
 *free_throws.csv
-*data_match.csv
-*data_play.csv
+*data_match.Rds
+*data_play.Rds

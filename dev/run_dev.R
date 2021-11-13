@@ -8,17 +8,16 @@ golem::detach_all_attached()
 golem::document_and_reload()
 
 # Load all data
-
 datasets <- list()
 
 datasets$match <-
-  readr::read_csv(
-    here::here("dev", "data", "app_data", "data_match.csv")
+  readRDS(
+    here::here("dev", "data", "app_data", "data_match.Rds")
   )
 
 datasets$play <-
-  readr::read_csv(
-    here::here("dev", "data", "app_data", "data_play.csv")
+  readRDS(
+    here::here("dev", "data", "app_data", "data_play.Rds")
   )
 
 shiny.app.nba::run_app(

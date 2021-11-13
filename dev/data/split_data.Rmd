@@ -64,9 +64,9 @@ Now we save the Match data:
 
 ```{r save_match_data}
 
-readr::write_csv(
+saveRDS(
   match_data,
-  file = here::here("dev", "data", "app_data", "data_match.csv")
+  file = here::here("dev", "data", "app_data", "data_match.Rds")
 )
 
 ```
@@ -103,9 +103,9 @@ Now we save the Play data:
 
 ```{r save_play_data}
 
-readr::write_csv(
+saveRDS(
   play_data,
-  file = here::here("dev", "data", "app_data", "data_play.csv")
+  file = here::here("dev", "data", "app_data", "data_play.Rds")
 )
 
 ```
