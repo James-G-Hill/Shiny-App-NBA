@@ -7,8 +7,12 @@ app_ui <- function(request) {
   
   shiny::tagList(
     golem_add_external_resources(),
-    shiny::fluidPage(
-      shiny::h1("shiny.app.nba")
+    bs4Dash::dashboardPage(
+      header = mod_header_ui("header"),
+      sidebar = mod_sidebar_ui("sidebar"),
+      body = mod_dashbody_ui("dashbody"),
+      freshTheme = fresh_theme(),
+      dark = NULL
     )
   )
   

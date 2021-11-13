@@ -5,4 +5,13 @@
 #' 
 app_server <- function(input, output, session) {
   
+  datasets <-
+    if (golem::app_prod()) {
+      
+    } else {
+      golem::get_golem_options("data")
+    }
+  
+  mod_dashbody_server("dashbody", datasets)
+  
 }

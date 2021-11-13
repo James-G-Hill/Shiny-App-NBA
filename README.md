@@ -40,6 +40,7 @@ Here is a list of notable features of the application:
     structure
 -   Written as a golem package with appropriate structure
 -   Written to Shiny standards including shiny modules
+-   GUI created with `bs4Dash` demonstrating BootStrap 4
 -   Source control via Git
 -   Package management with `renv`
 -   Includes Rmarkdown to split, clean, & conform original data source

@@ -1,0 +1,30 @@
+#' UI Navbar
+#'
+#' @param id The namespace identifier.
+#' @noRd
+#' 
+mod_header_ui <- function(id) {
+  
+  brand <-
+    shiny::tags$a(
+      class = "brand-link",
+      href = "#",
+      shiny::tags$img(
+        src = file.path("www", "favicon.ico"),
+        class = "brand-image",
+        style = htmltools::css(opacity = 1)
+      ),
+      shiny::tags$span(
+        "NBA Free Throws",
+        class = "brand-text font-weight-light",
+        style = htmltools::css(color = "white")
+      )
+    )
+  
+  bs4Dash::dashboardHeader(
+    title = brand,
+    compact = TRUE,
+    border = FALSE
+  )
+  
+}
