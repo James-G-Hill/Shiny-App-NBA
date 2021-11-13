@@ -1,36 +1,36 @@
 #' The application User-Interface
 #' 
-#' @param request Internal parameter for `{shiny}`. 
-#'     DO NOT REMOVE.
-#' @import shiny
+#' @param request Internal parameter for `{shiny}`.
 #' @noRd
+#' 
 app_ui <- function(request) {
-  tagList(
+  
+  shiny::tagList(
     golem_add_external_resources(),
-    fluidPage(
-      h1("shiny.app.nba")
+    shiny::fluidPage(
+      shiny::h1("shiny.app.nba")
     )
   )
+  
 }
+
 #' Add external Resources to the Application
 #' 
 #' This function is internally used to add external 
 #' resources inside the Shiny application. 
 #' 
-#' @import shiny
-#' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
-golem_add_external_resources <- function(){
-  
-  add_resource_path(
-    'www', app_sys('app/www')
-  )
+#' 
+golem_add_external_resources <- function() {
+
+  golem::add_resource_path("www", app_sys("app", "www"))
  
-  tags$head(
-    favicon(),
-    bundle_resources(
-      path = app_sys('app/www'),
-      app_title = 'shiny.app.nba'
+  shiny::tags$head(
+    golem::favicon(),
+    golem::bundle_resources(
+      path = app_sys("app", "www"),
+      app_title = "shiny.app.nba"
     )
   )
+  
 }

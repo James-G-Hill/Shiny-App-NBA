@@ -1,9 +1,8 @@
 #' The application server-side
 #' 
-#' @param input,output,session Internal parameters for {shiny}. 
-#'     DO NOT REMOVE.
-#' @import shiny
+#' @param input,output,session Internal parameters for {shiny}.
 #' @noRd
-app_server <- function( input, output, session ) {
+#' 
+app_server <- function(input, output, session) {
   
 }
