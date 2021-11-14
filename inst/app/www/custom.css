@@ -1,0 +1,11 @@
+/* Sidebar */
+
+[class*="sidebar-dark"] .brand-link {
+  border-bottom: 1px solid #fff !important;
+}
+
+.nav-link.active
+{
+  background-color: #fff !important;
+  color: #1d428a !important;
+}

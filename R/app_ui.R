@@ -11,7 +11,7 @@ app_ui <- function(request) {
       header = mod_header_ui("header"),
       sidebar = mod_sidebar_ui("sidebar"),
       body = mod_dashbody_ui("dashbody"),
-      freshTheme = fresh_theme(),
+      freshTheme = fresh_theme_nba(),
       dark = NULL
     )
   )

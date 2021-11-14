@@ -18,6 +18,7 @@ BugReports: https://github.com/James-G-Hill/shiny-app-nba.git/issues
 Imports:
   bs4Dash (>= 2.0.3),
   config (>= 0.3.1),
+  esquisse,
   fresh,
   golem (>= 0.3.1),
   htmltools,

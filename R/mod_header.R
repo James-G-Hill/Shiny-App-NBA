@@ -16,13 +16,14 @@ mod_header_ui <- function(id) {
       ),
       shiny::tags$span(
         "NBA Free Throws",
-        class = "brand-text font-weight-light",
+        class = "brand-text font-weight-bold",
         style = htmltools::css(color = "white")
       )
     )
   
   bs4Dash::dashboardHeader(
     title = brand,
+    status = "danger",
     compact = TRUE,
     border = FALSE
   )
