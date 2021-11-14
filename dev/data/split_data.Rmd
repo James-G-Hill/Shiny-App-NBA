@@ -6,7 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 ## Splitting Data
@@ -21,7 +23,21 @@ We will load the data in then split into 2 separate tables:
 
 nba_data <-
   readr::read_csv(
-    here::here("dev", "data", "source_data", "free_throws.csv")
+    here::here("dev", "data", "source_data", "free_throws.csv"),
+    col_types =
+      readr::cols(
+        end_result = readr::col_character(),
+        game = readr::col_character(),
+        game_id = readr::col_double(),
+        period = readr::col_double(),
+        play = readr::col_character(),
+        player = readr::col_character(),
+        playoffs = readr::col_character(),
+        score = readr::col_character(),
+        season = readr::col_character(),
+        shot_made = readr::col_double(),
+        time = readr::col_character()
+      )
   ) |>
   dplyr::distinct()
 
@@ -37,20 +53,30 @@ We will also split some of the text columns to allow for finer analysis.
 
 match_data <-
   nba_data |>
-  dplyr::select(
+  dplyr::group_by(
     game_id,
     game,
     end_result,
     season,
     playoffs
   ) |>
+  dplyr::summarise(
+    .groups = "drop_last",
+    total_free_throws = dplyr::n(),
+    successful_free_throws = as.integer(sum(shot_made)),
+    pcnt_successful_free_throws = successful_free_throws / total_free_throws
+  ) |>
+  dplyr::ungroup() |>
   dplyr::distinct() |>
-  tidyr::separate(col = game, into = c("team_1", "team_2")) |>
-  tidyr::separate(col = end_result, into = c("team_1_score", "team_2_score")) |>
+  tidyr::separate(col = game, into = c("team_away", "team_home")) |>
+  tidyr::separate(
+    col = end_result,
+    into = c("team_away_score", "team_home_score")
+  ) |>
   dplyr::mutate(
     game_id = as.integer(game_id),
-    team_1_score = as.integer(team_1_score),
-    team_2_score = as.integer(team_2_score)
+    team_away_score = as.integer(team_away_score),
+    team_home_score = as.integer(team_home_score)
   ) |>
   dplyr::arrange(
     season,
@@ -79,22 +105,31 @@ Play data contains information about the individual shots.
 
 play_data <-
   nba_data |>
+  tidyr::separate(
+    time,
+    into = c("minutes_remaining", "seconds_remaining"),
+    sep = ":"
+  ) |>
   dplyr::select(
     game_id,
     period,
     player,
     shot_made,
-    time
+    minutes_remaining,
+    seconds_remaining
   ) |>
   dplyr::mutate(
     game_id = as.integer(game_id),
     period = as.integer(period),
-    shot_made = as.logical(shot_made)
+    shot_made = as.logical(shot_made),
+    minutes_remaining = as.integer(minutes_remaining),
+    seconds_remaining = as.integer(seconds_remaining)
   ) |>
   dplyr::arrange(
     game_id,
     period,
-    time
+    desc(minutes_remaining),
+    desc(seconds_remaining)
   )
 
 ```
