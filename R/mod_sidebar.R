@@ -20,6 +20,11 @@ mod_sidebar_ui <- function(id) {
         icon = shiny::icon("chart-line")
       ),
       bs4Dash::menuItem(
+        text = "Table",
+        tabName = "tab_table",
+        icon = shiny::icon("table")
+      ),
+      bs4Dash::menuItem(
         text = "Help",
         tabName = "tab_help",
         icon = shiny::icon("info")

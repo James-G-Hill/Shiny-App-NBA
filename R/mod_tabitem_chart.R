@@ -31,7 +31,6 @@ mod_tabitem_chart_ui <- function(id) {
 #' @param id The namespace identifier.
 #' @param datasets A list of tibbles.
 #' @noRd
-#' @importFrom dplyr .data
 #' 
 mod_tabitem_chart_server <- function(id, datasets) {
   

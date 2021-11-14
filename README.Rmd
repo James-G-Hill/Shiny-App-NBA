@@ -51,11 +51,13 @@ Here is a list of notable features of the application:
 
 - Written as R package with DESCRIPTION file & appropriate directory structure
 - Written as a golem package with appropriate structure
-- Written to Shiny standards including shiny modules
-- Written to standards of Tidyverse Style Guide
-- GUI created with `bs4Dash` demonstrating BootStrap 4
+- Written to Shiny standards including shiny modules & reactive components
 - Source control via Git
 - Package management with `renv`
+- Written to standards of Tidyverse Style Guide
+- GUI created with `bs4Dash` demonstrating BootStrap 4
+- Interactive charts with `esquisse`
+- Interactive tables with `DataTable`
 - Includes Rmarkdown to split, clean, & conform original data source
 - Favicon created with `hexSticker`
 
