@@ -5,6 +5,12 @@
 #' 
 app_ui <- function(request) {
   
+  preload_variables <-
+    list(
+      html = waiter::spin_ball(),
+      color = "white"
+    )
+  
   shiny::tagList(
     golem_add_external_resources(),
     bs4Dash::dashboardPage(
@@ -12,7 +18,8 @@ app_ui <- function(request) {
       sidebar = mod_sidebar_ui("sidebar"),
       body = mod_dashbody_ui("dashbody"),
       freshTheme = fresh_theme_nba(),
-      dark = NULL
+      dark = NULL,
+      preloader = preload_variables
     )
   )
   

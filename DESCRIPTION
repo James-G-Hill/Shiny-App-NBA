@@ -26,7 +26,8 @@ Imports:
   htmltools,
   scales,
   shiny (>= 1.7.1),
-  stringr
+  stringr,
+  waiter
 Suggests: 
   spelling,
   testthat (>= 3.0.0)
