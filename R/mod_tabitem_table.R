@@ -11,7 +11,7 @@ mod_tabitem_table_ui <- function(id) {
     tabName = "tab_table",
     shiny::selectizeInput(
       inputId = ns("table_data"),
-      label = "Select Dataset:",
+      label = "Select Dataset",
       choices = NULL
     ),
     shiny::dataTableOutput(ns("datatable"))

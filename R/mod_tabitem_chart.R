@@ -11,7 +11,7 @@ mod_tabitem_chart_ui <- function(id) {
     tabName = "tab_chart",
     shiny::selectizeInput(
       inputId = ns("chart_data"),
-      label = "Select Dataset:",
+      label = "Select Dataset",
       choices = NULL
     ),
     esquisse::esquisse_ui(
@@ -19,7 +19,7 @@ mod_tabitem_chart_ui <- function(id) {
       header = FALSE,
       container =
         esquisse::esquisseContainer(
-          height = shiny::validateCssUnit("600px")
+          height = shiny::validateCssUnit("550px")
         )
     )
   )

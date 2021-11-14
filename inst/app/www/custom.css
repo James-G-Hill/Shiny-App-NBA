@@ -1,6 +1,7 @@
 /* Sidebar */
 
-[class*="sidebar-dark"] .brand-link {
+[class*="sidebar-dark"] .brand-link
+{
   border-bottom: 1px solid #fff !important;
 }
 
