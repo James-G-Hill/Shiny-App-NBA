@@ -26,7 +26,7 @@ In order to work on this application locally you will need the dataset.
 First, you will need to download the dataset from the following link:
 
 [NBA Free
-Throws](https://www.kaggle.com/astrospv/free-throw-champs-via-hierarchica-partial-pooling/data)
+Throws](https://www.kaggle.com/sebastianmantey/nba-free-throws)
 
 Then place the dataset in the ‘dev/data/source_data’ directory. You will
 then need to open and run the `split_data.Rmd` script. This will create

@@ -8,7 +8,7 @@ mod_header_ui <- function(id) {
   brand <-
     shiny::tags$a(
       class = "brand-link",
-      href = "#",
+      href = "https://www.kaggle.com/sebastianmantey/nba-free-throws",
       shiny::tags$img(
         src = file.path("www", "favicon.png"),
         class = "brand-image",
