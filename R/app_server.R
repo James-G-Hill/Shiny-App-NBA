@@ -7,7 +7,7 @@ app_server <- function(input, output, session) {
   
   datasets <-
     if (golem::app_prod()) {
-      
+      load_data()
     } else {
       golem::get_golem_options("data")
     }
