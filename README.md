@@ -31,6 +31,7 @@ Here is a list of notable features of the application:
     components
 -   Source control via Git
 -   Package management with `renv`
+-   Demonstration of variables managed with `config` file
 -   Written to standards of Tidyverse Style Guide
 -   Documentation of functions with `roxygen2`
 -   GUI created with `bs4Dash` demonstrating BootStrap 4

@@ -2,6 +2,8 @@ default:
   golem_name: shiny.app.nba
   golem_version: 0.0.0.9000
   app_prod: no
+  team: "LAL"
+  season: "2015 - 2016"
 production:
   app_prod: yes
 dev:

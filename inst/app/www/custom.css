@@ -10,3 +10,10 @@
   background-color: #fff !important;
   color: #1d428a !important;
 }
+
+/* HR */
+
+hr
+{
+  border-top: 2px solid #1d428a !important;
+}

@@ -19,12 +19,14 @@ Depends: R (>= 4.1.0)
 Imports:
   bs4Dash (>= 2.0.3),
   config (>= 0.3.1),
+  dplyr,
   esquisse,
   fresh,
   golem (>= 0.3.1),
   htmltools,
-  processx,
-  shiny (>= 1.7.1)
+  scales,
+  shiny (>= 1.7.1),
+  stringr
 Suggests: 
   spelling,
   testthat (>= 3.0.0)

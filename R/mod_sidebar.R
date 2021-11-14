@@ -15,6 +15,11 @@ mod_sidebar_ui <- function(id) {
       id = ns("sidebar"),
       compact = TRUE,
       bs4Dash::menuItem(
+        text = "Stats",
+        tabName = "tab_stats",
+        icon = shiny::icon("calculator")
+      ),
+      bs4Dash::menuItem(
         text = "Chart",
         tabName = "tab_chart",
         icon = shiny::icon("chart-line")
