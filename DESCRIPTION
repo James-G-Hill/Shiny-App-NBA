@@ -28,8 +28,7 @@ Imports:
   shiny (>= 1.7.1),
   stringr,
   waiter
-Suggests: 
-  spelling,
+Suggests:
   testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Language: en-US
