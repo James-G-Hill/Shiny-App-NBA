@@ -14,4 +14,6 @@ app_server <- function(input, output, session) {
   
   mod_dashbody_server("dashbody", datasets)
   
+  session$onSessionEnded(shiny::stopApp)
+  
 }
