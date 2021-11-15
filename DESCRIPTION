@@ -29,6 +29,8 @@ Imports:
   stringr,
   waiter
 Suggests:
-  testthat (>= 3.0.0)
+  shinytest,
+  testthat (>= 3.0.0),
+  tidyr
 Config/testthat/edition: 3
 Language: en-US
