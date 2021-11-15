@@ -75,6 +75,24 @@ the data in the ‘dev/data/app_data’ directory.
 4.  Load the library ‘rsconnect’ locally (`library('rsconnect')`)
 5.  Deploy with `rsconnect::deployApp('path/to/your/app')`
 
+## shinytest
+
+I recorded a `shinytest` to demonstrate that I am capable of doing so.
+However, recording this package & the tests with the finished package
+will fail. There are 2 current issues which are beyond easy resolution:
+
+-   `phantomJS` won’t record with the `esquisse` package loaded
+-   testing currently won’t identify the `bs4Dash::sidebarMenu` id
+
+The `phantomJS` issue maybe a result of that package no longer being
+developed. The sidebarMenu ‘id’ issue seems like it should be resolved:
+
+[bs4Dash Issue](https://github.com/RinteRface/bs4Dash/issues/8)
+
+I was unable to get it to work even though the ‘id’ being available in
+app. With further time I would investigate further & raise the second
+issue again.
+
 ## Attribution
 
 This package uses a free ‘basketball’ icon provided by Font Awesome. The
