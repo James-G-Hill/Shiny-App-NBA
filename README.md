@@ -31,8 +31,10 @@ Here is a list of notable features of the application:
     components
 -   Source control via Git
 -   Package management with `renv`
--   Demonstration of variables managed with `config` file
+-   ‘Stats’ page team & season variables managed with `config` file
 -   Added example test with `testthat`
+-   Added example `shinytest` script (although see related section
+    below)
 -   Written to standards of Tidyverse Style Guide
 -   Documentation of functions with `roxygen2`
 -   GUI created with `bs4Dash` demonstrating BootStrap 4
