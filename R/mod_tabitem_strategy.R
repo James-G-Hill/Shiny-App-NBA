@@ -33,7 +33,18 @@ mod_tabitem_strategy_ui <- function(id) {
       ),
       shiny::column(
         width = 9,
-        shiny::plotOutput(ns("strategy_plot"))
+        shiny::div(
+          class = "elevation-4",
+          style =
+            htmltools::css(
+              `background-color` = "#e9ecef",
+              padding = shiny::validateCssUnit("10px")
+            ),
+          shiny::plotOutput(
+            outputId = ns("strategy_plot"),
+            height = shiny::validateCssUnit("600px")
+          )
+        )
       )
     )
   )
@@ -72,12 +83,20 @@ mod_tabitem_strategy_server <- function(id, datasets) {
       )
       
       shiny::observeEvent(
-        shiny::req(input$analysed),
+        shiny::req(input$analysed, input$season),
         {
+          choices <-
+            joined_data |>
+            dplyr::filter(.data$season %in% input$season) |>
+            dplyr::pull(input$analysed) |>
+            unique() |>
+            sort()
+          
           shiny::updateSelectizeInput(
             inputId = "choices",
             label = stringr::str_glue("Pick {input$analysed}"),
-            choices = unique(joined_data[[input$analysed]]),
+            choices = choices,
+            selected = NULL,
             server = TRUE
           )
         }
@@ -95,11 +114,16 @@ mod_tabitem_strategy_server <- function(id, datasets) {
               input$season
             )
             
-            joined_data |>
+            chart_data <-
+              joined_data |>
               dplyr::filter(
                 .data$season %in% input$season,
                 .data[[input$analysed]] %in% input$choices
-              ) |>
+              )
+            
+            shiny::req(nrow(chart_data) > 0)
+            
+            chart_data |>
               dplyr::group_by(
                 .data[[input$analysed]],
                 .data$period,
@@ -109,19 +133,41 @@ mod_tabitem_strategy_server <- function(id, datasets) {
                 free_plays_success = sum(.data$shot_made) / dplyr::n()
               ) |>
               dplyr::ungroup() |>
-              dplyr::mutate(
-                minutes_remaining =
-                  as.character(dplyr::desc(.data$minutes_remaining))
-              ) |>
-              ggplot2::ggplot() +
-              ggplot2::geom_point(
+              ggplot2::ggplot(
                 ggplot2::aes(
                   x = .data$minutes_remaining,
-                  y = .data$free_plays_success
+                  y = .data$free_plays_success,
+                  color = .data[[input$analysed]],
+                  group = .data[[input$analysed]]
                 )
               ) +
-              ggplot2::facet_grid(rows = ggplot2::vars(.data$period)) +
-              ggplot2::theme_bw()
+              ggplot2::geom_point() +
+              ggplot2::geom_line() +
+              ggplot2::scale_x_continuous(
+                breaks = \(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1)))),
+                trans = "reverse"
+              ) +
+              ggplot2::scale_y_continuous(
+                labels = scales::percent,
+                breaks = c(0, .25, .5, .75, 1),
+                limits = c(0, 1)
+              ) +
+              ggplot2::facet_grid(
+                rows = ggplot2::vars(.data$period),
+                labeller =
+                  ggplot2::labeller(
+                    "period" = \(x) stringr::str_glue("Period {x}")
+                  )
+              ) +
+              ggplot2::labs(
+                title = "Averaged Successful Free Throws",
+                x = "Minutes Remaining",
+                y = "Percentage of successful free throws"
+              ) +
+              ggplot2::theme_bw() +
+              ggplot2::theme(
+                panel.grid.minor = ggplot2::element_blank()
+              )
           }
         )
       
