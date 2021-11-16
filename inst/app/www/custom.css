@@ -18,6 +18,23 @@ hr
   border-top: 2px solid #1d428a !important;
 }
 
+/* esquisse */
+
+.esquisse-geom-aes > div
+{
+  height: 100px !important;
+}
+
+.container-drag-source
+{
+  height: 45px !important;
+}
+
+.dragula-target
+{
+  height: 50px !important;
+}
+
 /* Datatable */
 
 .paginate_button a.page-link
