@@ -150,7 +150,7 @@ saveRDS(
 )
 
 saveRDS(
-  match_data,
+  play_data,
   file = here::here("inst", "extdata", "data_play.Rds")
 )
 
