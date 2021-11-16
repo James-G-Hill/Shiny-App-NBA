@@ -43,6 +43,7 @@ Here is a list of notable features of the application:
 -   Chart created with `ggplot2`
 -   Themed with `fresh`
 -   Further detailed theming through custom `css`
+-   Added tooltips with `css`
 -   Preloader configured with `waiter`
 -   Includes Rmarkdown to split, clean, & conform original data source
 -   Favicon created with `hexSticker`

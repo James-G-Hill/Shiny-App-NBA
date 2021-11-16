@@ -9,10 +9,13 @@ mod_tabitem_table_ui <- function(id) {
   
   bs4Dash::tabItem(
     tabName = "tab_table",
-    shiny::selectizeInput(
-      inputId = ns("table_data"),
-      label = "Select Dataset",
-      choices = NULL
+    tooltips(
+      shiny::selectizeInput(
+        inputId = ns("table_data"),
+        label = "Select Dataset",
+        choices = NULL
+      ),
+      text = "Select a dataset to view the data in the table below"
     ),
     shiny::hr(),
     DT::dataTableOutput(ns("datatable"))

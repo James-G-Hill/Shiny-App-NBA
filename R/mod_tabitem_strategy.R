@@ -12,17 +12,23 @@ mod_tabitem_strategy_ui <- function(id) {
     shiny::fluidRow(
       shiny::column(
         width = 3,
-        shiny::selectizeInput(
-          inputId = ns("season"),
-          label = "Pick a season",
-          choices = NULL,
-          multiple = TRUE
+        tooltips(
+          shiny::selectizeInput(
+            inputId = ns("season"),
+            label = "Pick a season",
+            choices = NULL,
+            multiple = TRUE
+          ),
+          text = "Pick seasons to average the results over"
         ),
-        shiny::selectizeInput(
-          inputId = ns("analysed"),
-          label = "Pick what to analyse",
-          choices = c("team_home", "team_away", "player"),
-          multiple = FALSE
+        tooltips(
+          shiny::selectizeInput(
+            inputId = ns("analysed"),
+            label = "Pick what to analyse",
+            choices = c("team_home", "team_away", "player"),
+            multiple = FALSE
+          ),
+          text = "Pick a variable to select items to analyse from"
         ),
         shiny::selectizeInput(
           inputId = ns("choices"),

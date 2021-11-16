@@ -9,10 +9,13 @@ mod_tabitem_chart_ui <- function(id) {
   
   bs4Dash::tabItem(
     tabName = "tab_chart",
-    shiny::selectizeInput(
-      inputId = ns("chart_data"),
-      label = "Select Dataset",
-      choices = NULL
+    tooltips(
+      shiny::selectizeInput(
+        inputId = ns("chart_data"),
+        label = "Select Dataset",
+        choices = NULL
+      ),
+      text = "Select a dataset to interactively analyse below"
     ),
     shiny::hr(),
     esquisse::esquisse_ui(
