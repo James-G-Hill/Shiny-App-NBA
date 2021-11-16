@@ -4,6 +4,8 @@ default:
   app_prod: no
   team: "LAL"
   season: "2015 - 2016"
+  team_color_1: "#552583"
+  team_color_2: "#FDB927"
 production:
   app_prod: yes
 dev:

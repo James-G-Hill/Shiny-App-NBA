@@ -27,7 +27,7 @@ Here is a list of notable features of the application:
 -   Written as R package with DESCRIPTION file & appropriate directory
     structure
 -   Written as a `golem` package with appropriate structure
--   Written to Shiny standards including shiny modules & reactive
+-   Written to `shiny` standards including shiny modules & reactive
     components
 -   Source control via Git
 -   Package management with `renv`
@@ -39,7 +39,8 @@ Here is a list of notable features of the application:
 -   Documentation of functions with `roxygen2`
 -   GUI created with `bs4Dash` demonstrating BootStrap 4
 -   Interactive charts with `esquisse`
--   Interactive tables with `DataTable`
+-   Interactive tables with `DT`
+-   Chart created with `ggplot2`
 -   Themed with `fresh`
 -   Further detailed theming through custom `css`
 -   Preloader configured with `waiter`
@@ -68,6 +69,23 @@ Throws](https://www.kaggle.com/sebastianmantey/nba-free-throws)
 Then place the dataset in the ‘dev/data/source_data’ directory. You will
 then need to open and run the `split_data.Rmd` script. This will create
 the data in the ‘dev/data/app_data’ directory.
+
+## Changing Team & Season
+
+The Stats tab has the team & season controlled by a configuration file.
+This has been enabled to demonstrate the capability. The file can be
+found at ‘inst/golem-config.yml’.
+
+The following options can be updated:
+
+-   `team` : A short code for the team
+-   `season` : A season in the format: ‘yyyy - yyyy’
+-   `team_color_1` : A team hex color for the banner
+-   `team_color_2` : Another team hex color for the banner
+
+Team colors can be found at the following link:
+
+[NBA Team Colors](https://teamcolorcodes.com/nba-team-color-codes/)
 
 ## Running on shinyapps.io
 

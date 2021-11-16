@@ -9,10 +9,27 @@ mod_tabitem_stats_ui <- function(id) {
   
   team_code <- get_golem_config("team")
   season <- get_golem_config("season")
+  color_1 <- get_golem_config("team_color_1")
+  color_2 <- get_golem_config("team_color_2")
   
   bs4Dash::tabItem(
     tabName = "tab_stats",
-    shiny::h1(stringr::str_glue("{team_code} : {season}")),
+    shiny::div(
+      class = "elevation-4",
+      style =
+        htmltools::css(
+          `background-image` =
+            stringr::str_glue("linear-gradient(to right, {color_1}, {color_2})")
+        ),
+      shiny::h1(
+        style =
+          htmltools::css(
+            color = "white",
+            `padding` = shiny::validateCssUnit("10px")
+          ),
+        stringr::str_glue("{team_code} : {season}")
+      )
+    ),
     shiny::hr(),
     mod_stats_row_ui(ns("reg"), "Regular Season"),
     shiny::hr(),
