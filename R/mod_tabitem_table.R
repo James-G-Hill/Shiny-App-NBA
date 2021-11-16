@@ -49,8 +49,35 @@ mod_tabitem_table_server <- function(id, datasets) {
       
       output$datatable <-
         DT::renderDataTable(
-          current_table(),
-          options = list(pageLength = 5, scrollX = TRUE)
+          {
+            dt_table <-
+              current_table() |>
+              dplyr::rename_with(
+                \(x) {
+                  x |>
+                    stringr::str_replace_all("_", " ") |>
+                    stringr::str_to_title()
+                }
+              ) |>
+              DT::datatable(
+                rownames = FALSE,
+                selection = "none",
+                style = "bootstrap4",
+                options =
+                  list(
+                    lengthChange = FALSE,
+                    pageLength = 5,
+                    scrollX = TRUE
+                  )
+              )
+            
+            if (input$table_data == "match") {
+              dt_table |>
+                DT::formatPercentage("Pcnt Successful Free Throws")
+            } else {
+              dt_table
+            }
+          }
         )
       
     }

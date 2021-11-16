@@ -17,3 +17,17 @@ hr
 {
   border-top: 2px solid #1d428a !important;
 }
+
+/* Datatable */
+
+.paginate_button a.page-link
+{
+  color: #1d428a !important;
+}
+
+.page-item.active .page-link
+{
+  color: white !important;
+  background-color: #1d428a !important;
+  border-color: #1d428a !important;
+}
