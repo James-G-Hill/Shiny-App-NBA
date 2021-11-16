@@ -14,7 +14,8 @@ mod_tabitem_table_ui <- function(id) {
       label = "Select Dataset",
       choices = NULL
     ),
-    shiny::dataTableOutput(ns("datatable"))
+    shiny::hr(),
+    DT::dataTableOutput(ns("datatable"))
   )
   
 }
@@ -47,9 +48,9 @@ mod_tabitem_table_server <- function(id, datasets) {
       )
       
       output$datatable <-
-        shiny::renderDataTable(
+        DT::renderDataTable(
           current_table(),
-          options = list(pageLength = 10)
+          options = list(pageLength = 5, scrollX = TRUE)
         )
       
     }
