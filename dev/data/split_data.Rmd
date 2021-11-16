@@ -95,6 +95,11 @@ saveRDS(
   file = here::here("dev", "data", "app_data", "data_match.Rds")
 )
 
+saveRDS(
+  match_data,
+  file = here::here("inst", "extdata", "data_match.Rds")
+)
+
 ```
 
 ## Play Data
@@ -108,7 +113,15 @@ play_data <-
   tidyr::separate(
     time,
     into = c("minutes_remaining", "seconds_remaining"),
-    sep = ":"
+    sep = ":",
+    remove = FALSE
+  ) |>
+  dplyr::mutate(
+    game_id = as.integer(game_id),
+    period = as.integer(period),
+    shot_made = as.logical(shot_made),
+    minutes_remaining = as.integer(minutes_remaining),
+    seconds_remaining = as.integer(seconds_remaining)
   ) |>
   dplyr::select(
     game_id,
@@ -117,13 +130,6 @@ play_data <-
     shot_made,
     minutes_remaining,
     seconds_remaining
-  ) |>
-  dplyr::mutate(
-    game_id = as.integer(game_id),
-    period = as.integer(period),
-    shot_made = as.logical(shot_made),
-    minutes_remaining = as.integer(minutes_remaining),
-    seconds_remaining = as.integer(seconds_remaining)
   ) |>
   dplyr::arrange(
     game_id,
@@ -141,6 +147,11 @@ Now we save the Play data:
 saveRDS(
   play_data,
   file = here::here("dev", "data", "app_data", "data_play.Rds")
+)
+
+saveRDS(
+  match_data,
+  file = here::here("inst", "extdata", "data_play.Rds")
 )
 
 ```
