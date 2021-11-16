@@ -44,7 +44,19 @@ mod_tabitem_table_server <- function(id, datasets) {
       current_table <- shiny::reactiveVal(value = datasets[[1]])
       
       shiny::observe(
-        current_table(datasets[[input$table_data]])
+        {
+          current_table(
+            if (input$table_data == "play") {
+              dplyr::left_join(
+                x = datasets$play,
+                y = datasets$match,
+                by = "game_id"
+              )
+            } else {
+              datasets[[input$table_data]]
+            }
+          )
+        }
       )
       
       output$datatable <-
@@ -69,14 +81,8 @@ mod_tabitem_table_server <- function(id, datasets) {
                     pageLength = 5,
                     scrollX = TRUE
                   )
-              )
-            
-            if (input$table_data == "match") {
-              dt_table |>
-                DT::formatPercentage("Pcnt Successful Free Throws")
-            } else {
-              dt_table
-            }
+              ) |>
+              DT::formatPercentage("Pcnt Successful Free Throws")
           }
         )
       
