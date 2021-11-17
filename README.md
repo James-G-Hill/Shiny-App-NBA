@@ -44,6 +44,8 @@ Here is a list of notable features of the application:
 -   Themed with `fresh`
 -   Further detailed theming through custom `css`
 -   Added tooltips with `css`
+-   Added demonstration of calls to Javascript to switch tabs from Help
+    tab
 -   Preloader configured with `waiter`
 -   Includes Rmarkdown to split, clean, & conform original data source
 -   Favicon created with `hexSticker`
@@ -70,6 +72,12 @@ Throws](https://www.kaggle.com/sebastianmantey/nba-free-throws)
 Then place the dataset in the ‘dev/data/source_data’ directory. You will
 then need to open and run the `split_data.Rmd` script. This will create
 the data in the ‘dev/data/app_data’ directory.
+
+You can then test the app locally with the following command:
+
+``` r
+golem::run_dev()
+```
 
 ## Changing Team & Season
 
