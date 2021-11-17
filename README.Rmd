@@ -140,6 +140,10 @@ A list of players per team per season would allow for stats per team per game.
 As is, the data only allows to analyse free throws across both teams per game.
 This limits the strategic analysis possible.
 
+## Known Issues
+
+The `esquisse` package interactive chart doesn't work on tested iPad.
+
 ## Attribution
 
 This package uses a free 'basketball' icon provided by Font Awesome.
