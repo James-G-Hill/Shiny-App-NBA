@@ -43,7 +43,15 @@ mod_stats_row_server <- function(id, data_match, team_code) {
             color = "purple",
             icon = shiny::icon("globe-americas"),
             elevation = 4,
-            gradient = TRUE
+            gradient = TRUE,
+            footer =
+              shiny::div(
+                shiny::p(
+                  "Count of all games both played home & away",
+                  align = "left"
+                ),
+                style = htmltools::css(margin = shiny::validateCssUnit("10px"))
+              )
           )
         )
       
@@ -57,7 +65,15 @@ mod_stats_row_server <- function(id, data_match, team_code) {
             color = "success",
             icon = shiny::icon("trophy"),
             elevation = 4,
-            gradient = TRUE
+            gradient = TRUE,
+            footer =
+              shiny::div(
+                shiny::p(
+                  "The percentage of all games both played home & away",
+                  align = "left"
+                ),
+                style = htmltools::css(margin = shiny::validateCssUnit("10px"))
+              )
           )
         )
       
@@ -69,7 +85,15 @@ mod_stats_row_server <- function(id, data_match, team_code) {
             color = "warning",
             icon = shiny::icon("meteor"),
             elevation = 4,
-            gradient = TRUE
+            gradient = TRUE,
+            footer =
+              shiny::div(
+                shiny::p(
+                  "Includes throws played by both teams in a game",
+                  align = "left"
+                ),
+                style = htmltools::css(margin = shiny::validateCssUnit("10px"))
+              )
           )
         )
       
@@ -87,7 +111,15 @@ mod_stats_row_server <- function(id, data_match, team_code) {
             color = "pink",
             icon = shiny::icon("hand-sparkles"),
             elevation = 4,
-            gradient = TRUE
+            gradient = TRUE,
+            footer =
+              shiny::div(
+                shiny::p(
+                  "Includes successful throws from both teams per game",
+                  align = "left"
+                ),
+                style = htmltools::css(margin = shiny::validateCssUnit("10px"))
+              )
           )
         )
       
