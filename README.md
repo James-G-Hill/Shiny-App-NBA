@@ -122,6 +122,18 @@ I was unable to get it to work even though the ‘id’ being available in
 app. With further time I would investigate further & raise the second
 issue again.
 
+## Further Development
+
+This application was developed to demonstrate Shiny features. I
+therefore did little development of the data due to time constraints. A
+deep review of the data with full cleaning would be necessary with more
+time.
+
+It is also not easy (& consistent) to identify the team for a player. A
+list of players per team per season would allow for stats per team per
+game. As is, the data only allows to analyse free throws across both
+teams per game. This limits the strategic analysis possible.
+
 ## Attribution
 
 This package uses a free ‘basketball’ icon provided by Font Awesome. The
