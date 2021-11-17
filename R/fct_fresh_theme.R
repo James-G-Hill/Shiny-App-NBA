@@ -4,8 +4,8 @@
 #' 
 fresh_theme_nba <- function() {
   
-  nba_blue <- "#1d428a"
-  nba_red <- "#c8102e"
+  nba_blue <- htmltools::parseCssColors("#1d428a")
+  nba_red <- htmltools::parseCssColors("#c8102e")
   
   fresh::create_theme(
     fresh::bs4dash_vars(
