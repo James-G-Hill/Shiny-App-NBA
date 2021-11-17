@@ -43,7 +43,7 @@ mod_tabitem_strategy_ui <- function(id) {
           class = "elevation-4",
           style =
             htmltools::css(
-              `background-color` = "#e9ecef",
+              `background-color` = htmltools::parseCssColors("#e9ecef"),
               padding = shiny::validateCssUnit("10px")
             ),
           shiny::plotOutput(
@@ -85,7 +85,8 @@ mod_tabitem_strategy_server <- function(id, datasets) {
       
       shiny::updateSelectizeInput(
         inputId = "season",
-        choices = unique(joined_data$season)
+        choices = unique(joined_data$season),
+        selected = unique(joined_data$season)[1]
       )
       
       shiny::observeEvent(
@@ -102,7 +103,7 @@ mod_tabitem_strategy_server <- function(id, datasets) {
             inputId = "choices",
             label = stringr::str_glue("Pick {input$analysed}"),
             choices = choices,
-            selected = NULL,
+            selected = choices[1],
             server = TRUE
           )
         }
@@ -155,7 +156,7 @@ mod_tabitem_strategy_server <- function(id, datasets) {
               ) +
               ggplot2::scale_y_continuous(
                 labels = scales::percent,
-                breaks = c(0, .25, .5, .75, 1),
+                breaks = c(0, .5, 1),
                 limits = c(0, 1)
               ) +
               ggplot2::facet_grid(
@@ -167,6 +168,7 @@ mod_tabitem_strategy_server <- function(id, datasets) {
               ) +
               ggplot2::labs(
                 title = "Averaged Successful Free Throws",
+                subtitle = "Shows free throws per game for all teams",
                 x = "Minutes Remaining",
                 y = "Percentage of successful free throws"
               ) +
