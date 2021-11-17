@@ -56,13 +56,13 @@ mod_tabitem_stats_server <- function(id, data_match) {
     function(input, output, session) {
       
       team_code <- get_golem_config("team")
-      season <- get_golem_config("season")
+      selected_season <- get_golem_config("season")
       
       match_regular <-
         data_match |>
         dplyr::filter(
           .data$team_home == team_code | .data$team_away == team_code,
-          .data$season == season,
+          .data$season == selected_season,
           .data$playoffs == "regular"
         )
       
@@ -70,7 +70,7 @@ mod_tabitem_stats_server <- function(id, data_match) {
         data_match |>
         dplyr::filter(
           .data$team_home == team_code | .data$team_away == team_code,
-          .data$season == season,
+          .data$season == selected_season,
           .data$playoffs == "playoffs"
         )
       
